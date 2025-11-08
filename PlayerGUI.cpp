@@ -8,7 +8,7 @@ PlayerGUI::PlayerGUI(PlayerAudio& audio, MainComponent& parentComponent)
 {
     startTimerHz(30);
 
-    // (إضافة المكونات)
+
     addAndMakeVisible(openButton);
     addAndMakeVisible(playButton);
     addAndMakeVisible(fromstartb);
@@ -25,7 +25,7 @@ PlayerGUI::PlayerGUI(PlayerAudio& audio, MainComponent& parentComponent)
     addAndMakeVisible(p10);
     addAndMakeVisible(m10);
 
-    // (إضافة المستمعين)
+
     openButton.addListener(this);
     playButton.addListener(this);
     fromstartb.addListener(this);
@@ -222,7 +222,7 @@ void PlayerGUI::timerCallback() {
         }
     }
     if(playerAudio.hasSource() && playerAudio.getLengthInSeconds() > 0 &&
-       (playerAudio.getLengthInSeconds() - playerAudio.getCurrentPosition() < 0.3)) // If 0.3 seconds left
+       (playerAudio.getLengthInSeconds() - playerAudio.getCurrentPosition() < 0.3))
     {
         if (looping) {
             playerAudio.setToStart(true);

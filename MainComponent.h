@@ -1,7 +1,4 @@
 
-// ===============================
-// File: MainComponent.h (correct header; the old pasted content looked wrong)
-// ===============================
 #pragma once
 #include <JuceHeader.h>
 #include "PlayerAudio.h"

@@ -9,23 +9,18 @@ playlist::playlist(PlayerAudio& audio, const juce::String& title)
     setResizable(true, false);
     centreWithSize(360, 460);
 
-    // ListBox look & behaviour
     playlistListBox.setModel(this);
     playlistListBox.setRowHeight(26);
     playlistListBox.setColour(juce::ListBox::backgroundColourId, juce::Colours::darkgrey.darker(0.3f));
     playlistListBox.setColour(juce::ListBox::outlineColourId, juce::Colours::grey);
 
-    // Button handler
     loadFilesButton.onClick = [this] { loadFilesClicked(); };
 
-    // Content wrapper (so children get laid out) – fixes the \"empty popup\" issue
     content = std::make_unique<ContentComponent>(playlistListBox, loadFilesButton);
     setContentOwned(content.release(), true);
 
-    // Listen to changes from the player
     playerAudio.addChangeListener(this);
 
-    // Initial populate
     playlistListBox.updateContent();
     setVisible(true);
 }

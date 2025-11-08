@@ -61,11 +61,11 @@ void PlayerAudio::loadTrack(int trackIndex, bool startPlaying) {
 
         resamplerSource = std::make_unique<juce::ResamplingAudioSource>(&transportSource, false, reader->numChannels);
 
-        // Prepare with current device I/O timing if already known
+
         if (currentBlockSize > 0 && currentSampleRate > 0.0)
             resamplerSource->prepareToPlay(currentBlockSize, currentSampleRate);
 
-        // IMPORTANT: set speed AFTER prepareToPlay so currentSampleRate is known
+
         setSpeed(speed);
 
         audioSourcePlayer.setSource(resamplerSource.get());
@@ -136,8 +136,8 @@ void PlayerAudio::unmute() { muted = false; transportSource.setGain(gain); }
 // void PlayerAudio::setSpeed(double newSpeed) {
 //     speed = newSpeed;
 //     if (resamplerSource) {
-//         // FIX: Correct resampling math. Normal playback ratio is
-//         // (originalFileSampleRate / currentSampleRate). Multiply by speed.
+//
+//
 //         double ratio = 1.0;
 //         if (currentSampleRate > 0.0 && originalFileSampleRate > 0.0)
 //             ratio = speed * (originalFileSampleRate / currentSampleRate);
@@ -156,7 +156,6 @@ void PlayerAudio::setSpeed(double newSpeed)
     {
         if (currentSampleRate > 0 && originalFileSampleRate > 0)
         {
-            // ✅ المعادلة الصحيحة تمامًا:
             double ratio = (originalFileSampleRate / currentSampleRate) * speed;
             resamplerSource->setResamplingRatio(ratio);
         }
@@ -174,7 +173,7 @@ void PlayerAudio::prepareToPlay(int samplesPerBlockExpected, double sampleRate) 
 
     if (resamplerSource) {
         resamplerSource->prepareToPlay(samplesPerBlockExpected, sampleRate);
-        setSpeed(speed); // refresh ratio now that sampleRate is known
+        setSpeed(speed);
     }
 }
 

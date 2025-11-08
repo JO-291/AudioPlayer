@@ -1,6 +1,4 @@
-// ===============================
-// File: PlayerAudio.h (only the declaration changed where relevant)
-// ===============================
+
 #pragma once
 #include <JuceHeader.h>
 #include <vector>
@@ -45,7 +43,7 @@ private:
     double currentSampleRate = 0.0;
     double originalFileSampleRate = 0.0;
 
-    void loadNewReader(juce::File& file); // (kept for completeness; no external use)
+    void loadNewReader(juce::File& file);
 
     juce::AudioFormatManager formatManager;
     std::unique_ptr<juce::AudioFormatReaderSource> readerSource;

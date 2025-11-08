@@ -1,6 +1,4 @@
-// ===============================
-// File: playlist.h
-// ===============================
+
 #pragma once
 #include <JuceHeader.h>
 #include "PlayerAudio.h"
